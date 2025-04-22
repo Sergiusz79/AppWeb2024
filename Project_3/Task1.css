@@ -1,3 +1,26 @@
-body{
-    background-color: rgb(59, 144, 241);
+body {
+  background-color: rgb(59, 144, 241);
+}
+
+div {
+  font-size: 20px;
+}
+
+#id1 {
+  border-bottom: 2px solid azure;
+  text-align: center;
+}
+
+#id2 {
+  text-align: left;
+}
+
+#id3 {
+  height: 10px;
+  width: 500px;
+  border-bottom: 5px solid red;
+}
+
+#id4 {
+  text-align: right;
 }
