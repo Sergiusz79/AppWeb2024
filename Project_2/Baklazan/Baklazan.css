@@ -1,0 +1,53 @@
+body{
+	margin:0px;
+	padding:0px;
+}	
+.banner{
+	box-sizing:border-box;
+	width:100%;
+	height:55px;
+background-color: brown;	
+}
+.zawartosc{
+	margin-left:20%;
+}
+h1{
+	color:red;
+}
+h2{
+	border-bottom: 2px solid red;
+	color:red;
+}
+ul{
+	font-family: Arial, sans-serif;
+	line-height: 20px;
+}
+p{
+	font-family: Arial, sans-serif;
+	line-height: 20px;
+}
+img{
+	float: left;
+	margin-left:-20%;
+}
+.menu{
+	position: absolute;
+	left: 0%;
+	top: 55px;
+	width: 250px;
+	height: auto;
+	background-color: brown;
+	border-style: solid;
+	display: block;
+}
+
+
+.menu_glowne li{
+	display: block;
+    height: 50px;
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, serif;
+	border-bottom: 2px solid black;
+    border-left: 10px solid #880000;
+}
