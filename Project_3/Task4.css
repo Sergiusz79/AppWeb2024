@@ -1,28 +1,54 @@
 body{
-  background-color: rgba(17, 250, 250, 0.753);
-}
-
-table{
-  background-color: rgb(217, 231, 231);
-  width: 40%;
-  height: auto;
-  margin: auto;
-  padding: 0;
-  margin-top: 15%;
-  border-collapse: collapse;  /*устанавливает, как будет стилизоваться граница смежных ячеек.
-                               collapse: смежные ячейки имеют общую границу*/
-  border-spacing: 0; /*устанавливает промежутки между границами смежных ячеек*/
-}
-
-td, th{
+  background-color: rgb(212, 242, 255);
   margin: 0;
   padding: 0;
-  border: 3px solid rgb(32, 32, 32);
-  text-align: center;
-  font-size: 23px;
-  line-height: 35px;
 }
 
-th{
-  background-color: rgb(184, 184, 184);
+header, footer{
+  background-color: #459df0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 15%;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+sidebar{
+  background-color: #a0cef8;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  margin-top: 6.9%;
+  margin-bottom: 20%;
+  height:77.9%;
+  width: 170px;
+  float: left;
+}
+
+ul{
+  text-align: left;
+  padding-left: 10px;
+  font-size: 20px;
+  list-style-type: none;
+}
+
+footer{
+  height: 7%;
+position: fixed;
+bottom: 0;
+left: 0;
+text-align: right;
+}
+
+h3, p{
+  line-height: 0%;
 }
