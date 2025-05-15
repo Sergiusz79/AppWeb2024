@@ -1,0 +1,16 @@
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #b9fb98;
+}
+
+div {
+  display: block;
+  margin: auto;
+  padding: auto;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  border: 3px solid #000;
+}
