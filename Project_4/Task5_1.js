@@ -9,35 +9,40 @@ function ustawKolor() {
   //Объявляем переменную element и присваиваем ей значение
   let element1 = document.getElementById("Block1");
   //Изменяем стиль цвета backgroung-color у элемента element
-  element1.style.backgroundColor =
-    "rgb(" + color + "," + color + "," + color + ")";
+  element1.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
 }
 
 function getRandomIntInclusive() {
   let color = Math.floor(Math.random() * 255);
   let element2 = document.getElementById("Block2");
-  element2.style.backgroundColor =
-    "rgb(" + color + "," + color + "," + color + ")";
+  element2.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
 }
 
-function zmienKolor(n) {
+function zmienSzarosc(n) {
   let element1 = document.getElementById("Block1");
   let rgbString = window.getComputedStyle(element1).backgroundColor;
   //Распарсим строку bgColor
-  const rgbValues = rgbString.match(/\d+/gi); //(/\d+/gi): Это регулярное выражение ищет одну или более цифр (\d+) по всей строке, g - global flag, он указывает движку регулярных выражений на необходимость выполнять поиск всех совпадений в заданной строке, а не останавливаться после первого найденного совпадения, i (case-insensitive): Поиск без учета регистра (Например, /красный/i найдет и "красный", и "Красный", и "кРАсный"). Флаги просто приписываем друг за другом после закрывающей косой черты / регулярного выражения. Порядок флагов не имеет значения. Метод match() возвращает массив найденных совпадений (строк).
+  const rgbValues = rgbString.match(/(\d+),\s*(\d+),\s*(\d+)/gi); //(/\d+/gi): Это регулярное выражение ищет одну или более цифр (\d+) по всей строке, ,\s*— 0 или больше пробелов (чтобы игнорировать пробелы после запятой), g - global flag, он указывает движку регулярных выражений на необходимость выполнять поиск всех совпадений в заданной строке, а не останавливаться после первого найденного совпадения, i (case-insensitive): Поиск без учета регистра (Например, /красный/i найдет и "красный", и "Красный", и "кРАсный"). Флаги просто приписываем друг за другом после закрывающей косой черты / регулярного выражения. Порядок флагов не имеет значения. Метод match() возвращает массив найденных совпадений (строк).
   if (rgbValues && rgbValues.length < 4) {
-    const red = parseInt(rgbValues[0], 10);
-    const green = parseInt(rgbValues[1], 10);
-    const blue = parseInt(rgbValues[2], 10);
+    const r = parseInt(rgbValues[0], 10);
+    const g = parseInt(rgbValues[1], 10);
+    const b = parseInt(rgbValues[2], 10);
+    let newColor = r + n;
+    if (newColor < 0 || newColor > 255) {
+      alert("Limit koloru!");
+      return;
+    }
+    element1.style.backgroundColor = `rgb(${newColor}, ${newColor}, ${newColor})`;
   } else {
     alert("Bląd koloru!");
     return;
   }
-  let newColor = bgColor + n;
-  if (newColor < 0 || newColor > 255) {
-    alert("Limit koloru!");
-    return;
-  }
-  element1.style.backgroundColor =
-    "rgb(" + newColor + "," + newColor + "," + newColor + ")";
+}
+
+function getRandomBackgroundColor() {
+  let r = Math.floor(Math.random() * 255);
+  let g = Math.floor(Math.random() * 255);
+  let b = Math.floor(Math.random() * 255);
+  let elementBody = document.body;
+  elementBody.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
