@@ -1,0 +1,30 @@
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #b9fb98;
+}
+
+div{
+  box-sizing: content-box;
+  margin-bottom: 10px;
+}
+
+#Block1, #Block2 {
+  display: block;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 60px 5px 60px 5px;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  border: 3px solid #000;
+}
+
+#Block1 {
+  margin-bottom: 5px;
+}
+
+#Block2 {
+  margin-top: 5px;
+}

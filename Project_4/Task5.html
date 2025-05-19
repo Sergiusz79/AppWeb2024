@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="Task5.css" />
+    <meta name="author" content="Your Name">
+    <title>Task4</title>
+</head>
+
+<body>
+    <div>
+        <h3 id="akapit">Enter color</h3>
+        <input type="text" id="poleTekstowe" />
+        <input type="button" value="Ustaw kolor" onclick="ustawKolor()" />
+        <input type="button" value="Jasniej" onclick="zmienSzarosc(5)" />
+        <input type="button" value="Ciemniej" onclick="zmienSzarosc(-5)" />
+
+    </div>
+    <div>
+        <h3 id="akapit">Enter random color</h3>
+        <input type="button" value="Ustaw losowy kolor" onclick="getRandomIntInclusive()" />
+    </div>
+    <script src="Task5.js"></script>
+    <div id="Block1">Block1</div>
+    <div id="Block2">Block2</div>
+</body>
+
+</html>
