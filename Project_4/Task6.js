@@ -26,9 +26,13 @@ function rgbStr(block) {
   return rgbString.match(/\d+/);
 }
 
+// Глобальная переменная для подсчета вызовов функции zmienSzarosc
+let zmienSzaroscCallCount = 0;
+
 function zmienSzarosc(block, n) {
+  zmienSzaroscCallCount++; // Увеличиваем счетчик при каждом вызове
   let element1 = document.getElementById(block);
-  //Распарсим строку bgColor
+  //Распарсим строку
   const rgbValues = rgbStr(block);
   if (rgbValues) {
     const color = parseInt(rgbValues[0], 10);
@@ -64,7 +68,7 @@ function podsumowanie(block1, block2) {
   const cell3 = document.createElement("td");
   const cell4 = document.createElement("td");
   // Устанавливаем содержимое ячеек, используя innerHTML
-  cell1.innerHTML = "Новая ячейка 1";
+  cell1.innerHTML = zmienSzaroscCallCount;
   cell2.innerHTML = window.getComputedStyle(element2).backgroundColor;
   cell3.innerHTML = window.getComputedStyle(element1).backgroundColor;
   cell4.innerHTML = Math.round(ruznicaKoloru*100)/100;
@@ -95,4 +99,5 @@ function czysc() {
   } else {
     alert("В таблице нет строк для удаления.");
   }
+  zmienSzaroscCallCount = 0; // Увеличиваем счетчик при каждом вызове
 }
