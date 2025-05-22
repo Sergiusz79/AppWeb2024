@@ -10,17 +10,26 @@ function ustawKolor() {
   element1.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
 }
 
-function getRandomIntInclusive() {
+function getRandomIntInclusive(blockName) {
   let color = Math.floor(Math.random() * 255);
-  let element2 = document.getElementById("Block2");
+  let element2 = document.getElementById(blockName);
   element2.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
 }
 
-function zmienSzarosc(n) {
-  let element1 = document.getElementById("Block1");
-  let rgbString = window.getComputedStyle(element1).backgroundColor;
-  //Распарсим строку rgbString
-  const rgbValues = rgbString.match(/\d+/);
+function rgbStr(block) {
+  let element = document.getElementById(block);
+  if (!element) {
+    console.error(`Ошибка в rgbStr: Элемент с ID "${block}" не найден.`);
+    return null; // Возвращаем null, чтобы вызывающая функция знала, что что-то пошло не так.
+  }
+  let rgbString = window.getComputedStyle(element).backgroundColor;
+  return rgbString.match(/\d+/);
+}
+
+function zmienSzarosc(block, n) {
+  let element1 = document.getElementById(block);
+  //Распарсим строку bgColor
+  const rgbValues = rgbStr(block);
   if (rgbValues) {
     const color = parseInt(rgbValues[0], 10);
     let newColor = color + n;
@@ -35,7 +44,14 @@ function zmienSzarosc(n) {
   }
 }
 
-function podsumowanie() {
+function podsumowanie(block1, block2) {
+  let element1 = document.getElementById(block1);
+  let element2 = document.getElementById(block2);
+  const rgbValue1 = rgbStr(block1);
+  const rgbValue2 = rgbStr(block2);
+  const color1 = parseInt(rgbValue1[0], 10);
+  const color2 = parseInt(rgbValue2[0], 10);
+  const ruznicaKoloru = (color1 - color2) / color2;
   let table = document
     .getElementById("myTable")
     .getElementsByTagName("tbody")[0]; //[0] используется для доступа к первому элементу массива, возвращаемого методом. Если бы мы не поставили [0], то переменная table содержала бы коллекцию элементов, а не конкретный элемент, и дальнейшие операции (например, добавление строк) могли бы не работать.
@@ -49,9 +65,9 @@ function podsumowanie() {
   const cell4 = document.createElement("td");
   // Устанавливаем содержимое ячеек, используя innerHTML
   cell1.innerHTML = "Новая ячейка 1";
-  cell2.innerHTML = "Новая ячейка 2";
-  cell3.innerHTML = "Новая ячейка 3";
-  cell4.innerHTML = "Новая ячейка 4";
+  cell2.innerHTML = window.getComputedStyle(element2).backgroundColor;
+  cell3.innerHTML = window.getComputedStyle(element1).backgroundColor;
+  cell4.innerHTML = Math.round(ruznicaKoloru*100)/100;
 
   // Добавляем ячейки в новую строку, используя appendChild
   newRow.appendChild(cell1);

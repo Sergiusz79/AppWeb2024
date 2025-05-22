@@ -14,17 +14,17 @@
             <h3 id="akapit">Enter color</h3>
             <input type="text" id="poleTekstowe" />
             <input type="button" value="Ustaw kolor" onclick="ustawKolor()" />
-            <input type="button" value="Jasniej" onclick="zmienSzarosc(5)" />
-            <input type="button" value="Ciemniej" onclick="zmienSzarosc(-5)" />
+            <input type="button" value="Jasniej" onclick="zmienSzarosc('Block1', 5)" />
+            <input type="button" value="Ciemniej" onclick="zmienSzarosc('Block1', -5)" />
 
         </div>
         <div id="EnterRandomColor">
             <h3 id="akapit">Enter random color</h3>
-            <input type="button" value="Ustaw losowy kolor" onclick="getRandomIntInclusive()" />
+            <input type="button" value="Ustaw losowy kolor" onclick="getRandomIntInclusive('Block2')" />
         </div>
         <div id="Podsumowanie">
             <h3 id="akapit">Podsumowanie</h3>
-            <input type="button" value="OK" onclick="podsumowanie()" />
+            <input type="button" value="OK" onclick="podsumowanie('Block1', 'Block2')" />
             <input type="button" value="Czyść" onclick="czysc()" />
         </div>
 
