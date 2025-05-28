@@ -5,10 +5,19 @@
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" href="Task1.css" />
     <meta name="author" content="Your Name">
-    <title>jQuery</title>
+    <title>Selectory</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
     </script>
-    <script type="text/javascript">$(document).ready(function () { alert('Czy wiesz, że możesz skopiować ten tekst przy pomocy skrótu Ctrl + C.'); }); 
+    <script type="text/javascript">
+    $(document).ready(
+        function () { 
+            $('#a').css('color', 'red').append(' doklejone'); 
+        }
+    ); //Jest to przykład selektora wyszukującego elementy według identyfikatora. Dla odnalezionego elementu ustawiamy kolor czerwony i doklejamy dodatkowy tekst. Przykład ten ilustruje bardzo ważną własność funkcji z biblioteki jQuery, mianowicie większość z nich zwraca obiekt, na rzecz którego była wywoływana. Pozwala to na stosowanie wygodnych, „łańcuchowych” wywołań funkcji dla tego samego obiektu.
+    $('div').css('color', 'green'); //zwraca kolekcję elementów <div>
+    $('.c').css('font-size', 'x-large'); //zwraca kolekcję elementów o klasie c
+    $('tr + tr').css('color', 'aqua'); //zwraca kolekcję elementów <tr> występujących po elemencie <tr>
+    alert('Wartość atrybutu color elementu o id="a" to ' + $('#a').css('color'));
     </script>
 </head>
 
