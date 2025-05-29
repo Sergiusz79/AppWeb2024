@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="Task1.css" />
+    <meta name="author" content="Your Name">
+    <title>JSON</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        // Skrócony zapis dla $(document).ready(function() { ... });
+        // Ten kod wykona się, gdy cały DOM zostanie w pełni załadowany i przetworzony przez przeglądarkę.
+        $(function () {
+            // $.getJSON() to metoda jQuery do wykonywania żądań AJAX, które oczekują danych w formacie JSON.
+            // Jest to specjalnie zaprojektowana do obsługi JSONP (JSON z paddingiem),
+            // co pozwala na omijanie zasad Same-Origin Policy (polityki tego samego pochodzenia)
+            // przy pobieraniu danych z innych domen, co jest często potrzebne przy API.
+            //
+            // Parametry:
+            // 1. "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?"
+            //    - To jest URL do publicznego kanału zdjęć Flickr.
+            //    - "?jsoncallback=?" jest kluczową częścią dla JSONP. jQuery automatycznie zastąpi '?'
+            //      unikalną nazwą funkcji callback, której Flickr użyje do "opakowania" swojej odpowiedzi JSON.
+            // 2. { tags: "cars", format: "json" }
+            //    - To są parametry zapytania wysyłane do API Flickra.
+            //    - 'tags: "cars"' filtruje zdjęcia, aby zawierały tag "cars".
+            //    - 'format: "json"' prosi Flickr o zwrócenie danych w formacie JSON (JSONP w tym przypadku).
+            // 3. function (data) { ... }
+            //    - To jest funkcja zwrotna (callback), która zostanie wykonana po pomyślnym odebraniu danych z Flickra.
+            //    - 'data' zawiera sparsowany obiekt JSON zwrócony przez API.
+            $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", { tags: "cars", format: "json" },
+                function (data) {
+                    // $.each() to uniwersalna funkcja iteracyjna jQuery, używana do pętlenia po obiektach lub tablicach.
+                    // Tutaj iterujemy po tablicy 'data.items', która zawiera poszczególne obiekty zdjęć z Flickra.
+                    // 'i' to indeks elementu, 'item' to aktualny element (obiekt zdjęcia).
+                    $.each(data.items, function (i, item) {
+                        // Tworzymy nowy element <img> za pomocą jQuery.
+                        // attr("src", item.media.m) ustawia atrybut 'src' dla obrazka na URL zdjęcia.
+                        // 'item.media.m' to ścieżka do miniatury zdjęcia z danych Flickra.
+                        //
+                        // Następnie dodajemy ten nowo utworzony element <img> do pierwszego elementu <div>
+                        // znalezionego na stronie. Ponieważ w body jest tylko jeden <div>, wszystkie zdjęcia
+                        // zostaną dodane do niego.
+                        $('div').append($("<img/>").attr("src", item.media.m));
+                    });
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
