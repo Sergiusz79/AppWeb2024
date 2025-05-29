@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="Task1.css" />
+    <meta name="author" content="Your Name">
+    <title>JSON</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        // Deklaracja obiektu JavaScript 'd'.
+        // Ta struktura danych przypomina format JSON (JavaScript Object Notation),
+        // choć jest to po prostu zwykły obiekt JavaScript zagnieżdżony.
+        // Zawiera informacje o "Pracownikach", a w nich tablicę obiektów "Pracownik",
+        // z których każdy ma właściwości "Imie" i "Nazwisko".
+        var d = {
+            "Pracownicy": {
+                "Pracownik": [
+                    { "Imie": "Maciej", "Nazwisko": "Zakrzewicz" },
+                    { "Imie": "Maciej", "Nazwisko": "Piernik" }
+                ]
+            }
+        };
+
+        // Skrócony zapis dla $(document).ready(function() { ... });
+        // Gwarantuje to, że kod wewnątrz wykona się dopiero, gdy cały DOM zostanie załadowany,
+        // co zapobiega próbom manipulacji elementami, które jeszcze nie istnieją na stronie.
+        $(function () {
+            // Pętla for iterująca po tablicy "Pracownik" znajdującej się w obiekcie 'd'.
+            // 'd.Pracownicy.Pracownik.length' zwraca liczbę elementów (pracowników) w tablicy.
+            for (var i = 0; i < d.Pracownicy.Pracownik.length; i++) {
+                // Wybieramy element o ID "x" (czyli div, w którym będziemy wyświetlać dane).
+                // Następnie używamy metody .append(), aby dodać nową zawartość na końcu tego elementu.
+                // Tworzymy nowy div dla każdego pracownika.
+                // Do zawartości diva wstawiamy imię i nazwisko pracownika,
+                // pobrane z aktualnego obiektu w tablicy (d.Pracownicy.Pracownik[i].Imie/Nazwisko).
+                $('#x').append('<div>' + d.Pracownicy.Pracownik[i].Imie + ' '
+                    + d.Pracownicy.Pracownik[i].Nazwisko + '</div>');
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Prowadzący mojego ulubionego przedmiotu</h1>
+    <div id="x"></div>
+</body>
+
+</html>
