@@ -8,37 +8,45 @@
     <style>
         /* Styl dla linków (anchor tags) */
         a {
-            margin: 10px;
-            /* Dodaje 10 pikseli marginesu wokół każdego linku, tworząc odstęp */
+            margin: 10px; /* Dodaje 10 pikseli marginesu wokół każdego linku, tworząc odstęp */
         }
 
         /* Styl dla diva z ID "content" */
         #content {
-            border: 1px solid black;
-            /* Jednopikselowa, czarna ramka wokół diva */
-            padding: 20px;
-            /* 20 pikseli wewnętrznego odstępu (między zawartością a ramką) */
-            width: 50%;
-            /* Szerokość 50% dostępnego obszaru rodzica */
+            border: 1px solid black; /* Jednopikselowa, czarna ramka wokół diva */
+            padding: 20px;           /* 20 pikseli wewnętrznego odstępu (między zawartością a ramką) */
+            width: 50%;              /* Szerokość 50% dostępnego obszaru rodzica */
         }
     </style>
     <script type="text/javascript">
         // Funkcja $(function() { ... }); to skrócony zapis dla $(document).ready(function() { ... });
-        // Gwarantuje to, że kod wewnątrz wykona się dopiero, gdy cały DOM (struktura HTML) zostanie załadowany
-        // i wszystkie elementy będą dostępne dla jQuery.
+        // Gwarantuje to, że kod wewnątrz wykona się dopiero, gdy cały DOM (struktura HTML) zostanie załadowany.
         $(function () {
             // Wybieramy wszystkie elementy <a> (linki) na stronie
             $('a').click(function () {
                 // Po kliknięciu na link:
-                // Zapisujemy referencję do klikniętego linku w zmiennej 'thisA'.
-                // Jest to ważne, ponieważ 'this' w funkcji zwrotnej fadeOut() odwoływałoby się do #content,
-                // a potrzebujemy dostępu do 'href' klikniętego linku.
-                var thisA = $(this);
-                $('#content').animate({ height: '0px', width: '0px' }, function () {
-                    $('#content').load('AJAX' + thisA.attr('href'), function () {
+                // Zapisujemy referencję do klikniętego linku w nowej zmiennej 'clickedLink'.
+                // Jest to konieczne, ponieważ w zagnieżdżonych funkcjach strzałkowych 'this'
+                // dziedziczy kontekst z tego miejsca, a nie z klikniętego elementu <a>.
+                // Dzięki temu 'clickedLink' zawsze odnosi się do linku, który został kliknięty.
+                const clickedLink = $(this); // Zastępuje 'var thisA = $(this);'
+
+                // Rozpoczynamy animację zmniejszania diva #content do 0px wysokości i szerokości.
+                // Funkcja zwrotna (callback), która wykona się po zakończeniu animacji, jest teraz funkcją strzałkową.
+                $('#content').animate({ height: '0px', width: '0px' }, () => {
+                    // Ta funkcja wykonuje się, gdy div #content osiągnie rozmiar 0x0.
+
+                    // Wczytujemy nową zawartość do diva #content za pomocą żądania AJAX.
+                    // Używamy 'clickedLink.attr('href')' do pobrania ścieżki z klikniętego linku.
+                    // Funkcja zwrotna (callback) dla .load() jest również funkcją strzałkową.
+                    $('#content').load('AJAX' + clickedLink.attr('href'), () => {
+                        // Ta funkcja zwrotna wykonuje się, gdy zawartość AJAX zostanie pomyślnie załadowana.
+
+                        // Rozpoczynamy animację powiększania diva #content do 500px wysokości i szerokości.
                         $('#content').animate({ height: '500px', width: '500px' });
                     });
                 });
+
                 // return false; jest bardzo ważne!
                 // Zapobiega domyślnej akcji przeglądarki dla linku (czyli przejściu na stronę z atrybutu href).
                 // Jest to kluczowe, aby zamiast pełnego przeładowania strony wykonać asynchroniczne żądanie AJAX
