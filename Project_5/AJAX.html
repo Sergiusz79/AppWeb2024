@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="Task1.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        /* Styl dla linków (anchor tags) - dodaje 10px marginesu wokół każdego linku */
+        a {margin: 10px;} 
+        /* Styl dla diva z ID "content" - definiuje obramowanie, padding i szerokość */
+        #content {
+            border: 1px solid black; /* Jednopikselowa, czarna ramka */
+            padding: 20px;           /* 20 pikseli wewnętrznego odstępu */
+            width: 50%;              /* Szerokość 50% dostępnego obszaru */
+        }
+    </style>
+    <script type="text/javascript">
+        // Funkcja $(function() { ... }); to skrócony zapis dla $(document).ready(function() { ... });
+        // Oznacza to, że kod wewnątrz wykona się, gdy cały DOM (struktura HTML) zostanie załadowany.
+        $(function () {
+            // Wybieramy wszystkie elementy <a> (linki) na stronie
+            $('a').click(function () {
+                // Po kliknięciu na link:
+                // 1. Pobieramy element z ID "content"
+                // 2. Wywołujemy na nim metodę .load()
+                //    .load() to metoda jQuery do wczytywania danych z serwera i umieszczania ich w wybranym elemencie.
+                //    'AJAX' + $(this).attr('href') tworzy URL.
+                //    $(this).attr('href') pobiera wartość atrybutu href klikniętego linku (np. "Selektory.html").
+                //    Zatem URL będzie wyglądał np. "AJAXSelektory.html".
+                //    Oznacza to, że oczekuje się pliku o nazwie np. AJAXSelektory.html na serwerze,
+                //    którego zawartość zostanie wczytana do diva #content.
+                $('#content').load('AJAX' + $(this).attr('href'));
+                // return false; zapobiega domyślnej akcji przeglądarki dla linku (czyli przejściu na stronę z href).
+                // Jest to kluczowe, aby zapobiec przeładowaniu całej strony i zamiast tego wykonać żądanie AJAX.
+                return false; 
+            });
+        });
+    </script>
+    <meta name=" author" content="Your Name">
+    <title>Ajax</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="Selektory.html">Strona1</a>
+            <a href="Style.html">Strona2</a>
+            <a href="Zdarzenia.html">Strona3</a>
+        </nav>
+    </header>
+    <div id="content"></div>
+</body>
+
+</html>
