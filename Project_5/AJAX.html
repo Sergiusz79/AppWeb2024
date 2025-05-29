@@ -6,38 +6,48 @@
     <link type="text/css" rel="stylesheet" href="Task1.css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <style>
-        /* Styl dla linków (anchor tags) - dodaje 10px marginesu wokół każdego linku */
-        a {margin: 10px;} 
-        /* Styl dla diva z ID "content" - definiuje obramowanie, padding i szerokość */
+        /* Styl dla linków (anchor tags) */
+        a {
+            margin: 10px;
+            /* Dodaje 10 pikseli marginesu wokół każdego linku, tworząc odstęp */
+        }
+
+        /* Styl dla diva z ID "content" */
         #content {
-            border: 1px solid black; /* Jednopikselowa, czarna ramka */
-            padding: 20px;           /* 20 pikseli wewnętrznego odstępu */
-            width: 50%;              /* Szerokość 50% dostępnego obszaru */
+            border: 1px solid black;
+            /* Jednopikselowa, czarna ramka wokół diva */
+            padding: 20px;
+            /* 20 pikseli wewnętrznego odstępu (między zawartością a ramką) */
+            width: 50%;
+            /* Szerokość 50% dostępnego obszaru rodzica */
         }
     </style>
     <script type="text/javascript">
         // Funkcja $(function() { ... }); to skrócony zapis dla $(document).ready(function() { ... });
-        // Oznacza to, że kod wewnątrz wykona się, gdy cały DOM (struktura HTML) zostanie załadowany.
+        // Gwarantuje to, że kod wewnątrz wykona się dopiero, gdy cały DOM (struktura HTML) zostanie załadowany
+        // i wszystkie elementy będą dostępne dla jQuery.
         $(function () {
             // Wybieramy wszystkie elementy <a> (linki) na stronie
             $('a').click(function () {
                 // Po kliknięciu na link:
-                // 1. Pobieramy element z ID "content"
-                // 2. Wywołujemy na nim metodę .load()
-                //    .load() to metoda jQuery do wczytywania danych z serwera i umieszczania ich w wybranym elemencie.
-                //    'AJAX' + $(this).attr('href') tworzy URL.
-                //    $(this).attr('href') pobiera wartość atrybutu href klikniętego linku (np. "Selektory.html").
-                //    Zatem URL będzie wyglądał np. "AJAXSelektory.html".
-                //    Oznacza to, że oczekuje się pliku o nazwie np. AJAXSelektory.html na serwerze,
-                //    którego zawartość zostanie wczytana do diva #content.
-                $('#content').load('AJAX' + $(this).attr('href'));
-                // return false; zapobiega domyślnej akcji przeglądarki dla linku (czyli przejściu na stronę z href).
-                // Jest to kluczowe, aby zapobiec przeładowaniu całej strony i zamiast tego wykonać żądanie AJAX.
-                return false; 
+                // Zapisujemy referencję do klikniętego linku w zmiennej 'thisA'.
+                // Jest to ważne, ponieważ 'this' w funkcji zwrotnej fadeOut() odwoływałoby się do #content,
+                // a potrzebujemy dostępu do 'href' klikniętego linku.
+                var thisA = $(this);
+                $('#content').animate({ height: '0px', width: '0px' }, function () {
+                    $('#content').load('AJAX' + thisA.attr('href'), function () {
+                        $('#content').animate({ height: '500px', width: '500px' });
+                    });
+                });
+                // return false; jest bardzo ważne!
+                // Zapobiega domyślnej akcji przeglądarki dla linku (czyli przejściu na stronę z atrybutu href).
+                // Jest to kluczowe, aby zamiast pełnego przeładowania strony wykonać asynchroniczne żądanie AJAX
+                // i dynamicznie zaktualizować tylko część strony.
+                return false;
             });
         });
     </script>
-    <meta name=" author" content="Your Name">
+    <meta name="author" content="Your Name">
     <title>Ajax</title>
 </head>
 
