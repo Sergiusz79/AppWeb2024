@@ -7,6 +7,7 @@
     <meta name="author" content="Your Name">
     <title>Q&A</title>
     <style>
+        /* Style CSS dla poszczególnych divów, ustawiające kolor tła */
         #r {
             background-color: Red;
         }
@@ -19,25 +20,60 @@
             background-color: Blue;
         }
 
+        /* Wspólne style dla wszystkich trzech divów */
         #r,
         #g,
         #b {
-            height: 100px;
-            width: 500px;
-            border: 1px solid black;
-            text-align: center;
+            height: 100px;         /* Stała wysokość 100 pikseli */
+            width: 500px;          /* Stała szerokość 500 pikseli */
+            border: 1px solid black; /* Jednopikselowe, czarne obramowanie */
+            text-align: center;    /* Wyśrodkowanie tekstu wewnątrz divów (jeśli jakiś by się pojawił) */
         }
     </style>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript">function Down() {
-            var div = $(this);
+    <script type="text/javascript">
+        // Definicja funkcji 'Down', która będzie obsługiwać zdarzenie 'mousedown' (naciśnięcie przycisku myszy)
+        // na divach. Ta funkcja inicjuje operację "przeciągnij i upuść".
+        function Down() {
+            // 'this' w tym kontekście odnosi się do diva, na którym kliknięto myszką.
+            // Zapisujemy go w zmiennej 'div' dla łatwiejszego dostępu.
+            var div = $(this); 
+
+            // Po naciśnięciu przycisku myszy na divie, przypisujemy nowy handler do zdarzenia 'mousemove'
+            // na WSZYSTKICH divach. Oznacza to, że każdy ruch myszą nad dowolnym divem
+            // spowoduje wywołanie tej funkcji.
             $('div').mousemove(function (e) {
-                div.remove();
-                div.insertAfter(e.target); div.mousedown(Down);
+                // Ta funkcja jest wykonywana przy każdym ruchu myszy, gdy przycisk jest wciśnięty.
+                // 1. Usuwamy aktualnie przeciągany div z jego obecnej pozycji w DOM.
+                div.remove(); 
+                // 2. Wstawiamy przeciągany div PO elemencie, nad którym aktualnie znajduje się kursor myszy (e.target).
+                // To tworzy efekt dynamicznego przestawiania divów.
+                div.insertAfter(e.target); 
+                // 3. Ważne: Ponownie przypisujemy zdarzenie 'mousedown' do przeciąganego diva.
+                // Jest to konieczne, ponieważ po 'remove()' i 'insertAfter()', elementy DOM są odłączane i ponownie dołączane,
+                // co może usunąć wcześniej przypisane zdarzenia w pewnych wersjach jQuery lub w pewnych przeglądarkach.
+                // Upewniamy się, że nasz div nadal jest "przeciągalny".
+                div.mousedown(Down); 
             });
-            $('div').mouseup(function (e) { $('div').unbind('mousemove'); });
+
+            // Po naciśnięciu przycisku myszy na divie, przypisujemy handler do zdarzenia 'mouseup' (zwolnienie przycisku myszy)
+            // na WSZYSTKICH divach.
+            $('div').mouseup(function (e) {
+                // Ta funkcja wykonuje się, gdy użytkownik zwolni przycisk myszy.
+                // Usuwamy handler zdarzenia 'mousemove', który został przypisany wcześniej.
+                // Dzięki temu divy przestają reagować na ruch myszy po upuszczeniu.
+                $('div').unbind('mousemove'); 
+            });
         }
-        $(document).ready(function () { $('div').mousedown(Down); });
+
+        // $(document).ready(function () { ... }); to standardowy sposób uruchamiania kodu jQuery
+        // po pełnym załadowaniu i przetworzeniu drzewa DOM przez przeglądarkę.
+        $(document).ready(function () {
+            // Przypisujemy funkcję 'Down' do zdarzenia 'mousedown' (naciśnięcie przycisku myszy)
+            // dla WSZYSTKICH divów na stronie.
+            // Oznacza to, że kliknięcie na dowolny z divów (#r, #g, #b) rozpocznie proces przeciągania.
+            $('div').mousedown(Down); 
+        });
     </script>
 </head>
 
