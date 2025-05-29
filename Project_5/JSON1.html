@@ -8,11 +8,8 @@
     <title>JSON</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
-        // Deklaracja obiektu JavaScript 'd'.
-        // Ta struktura danych przypomina format JSON (JavaScript Object Notation),
-        // choć jest to po prostu zwykły obiekt JavaScript zagnieżdżony.
-        // Zawiera informacje o "Pracownikach", a w nich tablicę obiektów "Pracownik",
-        // z których każdy ma właściwości "Imie" i "Nazwisko".
+        // Deklaracja obiektu JavaScript 'd', reprezentującego dane o pracownikach.
+        // Struktura danych przypomina format JSON.
         var d = {
             "Pracownicy": {
                 "Pracownik": [
@@ -23,20 +20,23 @@
         };
 
         // Skrócony zapis dla $(document).ready(function() { ... });
-        // Gwarantuje to, że kod wewnątrz wykona się dopiero, gdy cały DOM zostanie załadowany,
-        // co zapobiega próbom manipulacji elementami, które jeszcze nie istnieją na stronie.
+        // Kod wykona się po załadowaniu całego drzewa DOM.
         $(function () {
-            // Pętla for iterująca po tablicy "Pracownik" znajdującej się w obiekcie 'd'.
-            // 'd.Pracownicy.Pracownik.length' zwraca liczbę elementów (pracowników) w tablicy.
-            for (var i = 0; i < d.Pracownicy.Pracownik.length; i++) {
-                // Wybieramy element o ID "x" (czyli div, w którym będziemy wyświetlać dane).
-                // Następnie używamy metody .append(), aby dodać nową zawartość na końcu tego elementu.
-                // Tworzymy nowy div dla każdego pracownika.
-                // Do zawartości diva wstawiamy imię i nazwisko pracownika,
-                // pobrane z aktualnego obiektu w tablicy (d.Pracownicy.Pracownik[i].Imie/Nazwisko).
-                $('#x').append('<div>' + d.Pracownicy.Pracownik[i].Imie + ' '
-                    + d.Pracownicy.Pracownik[i].Nazwisko + '</div>');
-            }
+            // KLUCZOWA ZMIANA: Zastąpienie pętli 'for' funkcją 'map()'.
+
+            // 1. Dostęp do tablicy pracowników: d.Pracownicy.Pracownik
+            // 2. Użycie metody .map() na tej tablicy:
+            //    Dla każdego obiektu 'p' (pracownika) w tablicy, funkcja map() zwraca string HTML.
+            //    W ten sposób tworzymy NOWĄ tablicę, która zawiera stringi HTML dla każdego pracownika.
+            var pracownicyHTML = d.Pracownicy.Pracownik.map(function(p) {
+                return '<div>' + p.Imie + ' ' + p.Nazwisko + '</div>';
+            });
+
+            // 3. Połączenie tablicy stringów w jeden duży string:
+            //    Metoda .join('') łączy wszystkie elementy tablicy 'pracownicyHTML' w jeden string,
+            //    bez żadnego separatora między nimi.
+            // 4. Wstawienie gotowego stringa HTML do diva o ID 'x'.
+            $('#x').append(pracownicyHTML.join(''));
         });
     </script>
 </head>
