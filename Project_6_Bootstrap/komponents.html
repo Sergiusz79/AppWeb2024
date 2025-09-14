@@ -5,17 +5,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <meta name="author" content="Your Name">
     <!-- ==================================================================== -->
     <!-- Вариант подключения Bootsrap извне -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
     <!-- ==================================================================== -->
     <!-- Вариант подключения Bootsrap из файла -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Document</title>
+    <!-- Поключаем иконки bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <title>Project-6-Bootstrap</title>
 </head>
 
 <body>
+    <!-- Icons -->
+    <!-- Korzystając z listy dostępnych ikonek https://icons.getbootstrap.com dodaj w pliku komponenty.html ikonki symbolizujące działania przycisków na odtwarzaczu video: na początek, do tyłu, start, stop, pauza, do przodu, na koniec -->
+    <section class="zadanie1">
+        <div class="container text-center">
+            <div class="row passButtons">
+                <div class="col-12">
+                    <h5>Zadanie1</h5>
+                    <!-- na początek -->
+                    <button class="btn btn_icon"><i class="bi bi-skip-start-circle-fill"></i></button>
+                    <!-- do tyłu -->
+                    <button class="btn btn_icon"><i class="bi bi-skip-backward-circle-fill"></i></button>
+                    <!-- start -->
+                    <button class="btn btn_icon"><i class="bi bi-play-circle-fill"></i></button>
+                    <!-- stop -->
+                    <button class="btn btn_icon"><i class="bi bi-stop-circle-fill"></i></button>
+                    <!-- pauza -->
+                    <button class="btn btn_icon"><i class="bi bi-pause-circle-fill"></i></button>
+                    <!-- do przodu -->
+                    <button class="btn btn_icon"><i class="bi bi-skip-forward-circle-fill"></i></button>
+                    <!-- na koniec -->
+                    <button class="btn btn_icon"><i class="bi bi-skip-end-circle-fill"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pagination -->
+    <!-- Korzystając z przykładu dostępnego pod adresem https://getbootstrap.com/docs/5.0/components/pagination/ ułóż ikonki z zadania pierwszego w pasek przycisków. Ustaw przycisk start jako aktywny. Powiększ pasek do dużych rozmiarów (pagination-lg).  -->
+    <!-- В Bootstrap класс page-link обычно применяется к <a> или <button> внутри <li class="page-item"> и если ты хочешь, чтобы элемент выглядел как стандартная большая пагинация (pagination-lg), тогда лучше заменить класс .btn на .page-link -->
+    <section class="zadanie2">
+        <div class="container text-center">
+            <div class="row passButtons">
+                <div class="col-12">
+<h5>Zadanie2</h5>
+                    <nav aria-label="Kontrolki odtwarzacza">
+                        <ul class="pagination pagination-lg justify-content-center">
+                            <li class="page-item">
+                                <!-- na początek -->
+                                <a class="page-link btn_pagination"><i class="bi bi-skip-start-circle-fill"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <!-- do tyłu -->
+                                <a class="page-link btn_pagination"><i class="bi bi-skip-backward-circle-fill"></i></a>
+                            </li>
+                            <li class="page-item active">
+                                <!-- start -->
+                                <a class="page-link btn_pagination"><i class="bi bi-play-circle-fill"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <!-- stop -->
+                                <a class="page-link btn_pagination"><i class="bi bi-stop-circle-fill"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <!-- pauza -->
+                                <a class="page-link btn_pagination"><i class="bi bi-pause-circle-fill"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <!-- do przodu -->
+                                <a class="page-link btn_pagination"><i class="bi bi-skip-forward-circle-fill"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <!-- na koniec -->
+                                <a class="page-link btn_pagination"><i class="bi bi-skip-end-circle-fill"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Przyciski -->
+    <!-- Korzystając z informacji dostępnej pod adresem https://getbootstrap.com/docs/5.0/components/buttons/ utwórz zestaw przycisków wykorzystujących style btn-primary, btn-success, btn-info, btn-warning, btn-danger, btn-link, powiększ przycisk „danger” do rozmiarów „btn-lg”. 
+    Przykład:
+            <button type="button" class="btn btn-default">Default Button</button> -->
+    <section class="zadanie3">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Zadanie3</h5>
+                    <button type="button" class="btn btn-primary">Primary</button>
+                    <button type="button" class="btn btn-success">Success</button>
+                    <button type="button" class="btn btn-lg btn-danger">Danger</button>
+                    <button type="button" class="btn btn-warning">Warning</button>
+                    <button type="button" class="btn btn-info">Info</button>
+                    <button type="button" class="btn btn-link">Link</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Odznaki -->
+    <!-- Korzystając z przykładu dostępnego pod adresem https://getbootstrap.com/docs/5.0/components/badge/ przygotuj przycisk klasy info z tekstem „Nieprzeczytane wiadomości” oraz liczbą 50 umieszczoną w przycisku. -->
+    <section class="zadanie4">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Zadanie4</h5>
+                    <button type="button" class="btn btn-lg btn-primary">Nieprzeczytane wiadomości <span
+                            class="badge text-bg-secondary">50</span></button>
+                    <button type="button" class="btn btn-lg btn-primary">
+                        Notifications <span class="badge text-bg-danger">4</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Obrazki -->
+    <!-- Korzystając z przykładów dostępnych pod adresem http://www.tutorialspoint.com/bootstrap/bootstrap_images.htm przekształć trzy obrazki umieszone w pliku komponenty.html w taki sposób aby pierwszy posiadał zaokrąglone rogi, drugi był okrągły a trzeci posiadał klasę thumbnail.  -->
+    <section class="zadanie5">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Zadanie5</h5>
+                    <img src="img/1.jpg" alt="obrazek.jpg" class="img-fluid rounded">
+                    <img src="img/2.jpg" alt="obrazek.jpg" class="img-fluid rounded-circle">
+                    <img src="img/3.jpg" alt="obrazek.jpg" class="img-fluid img-thumbnail">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Paski postępu -->
+    <!-- Wykorzystując przykład dostępny pod adresem https://getbootstrap.com/docs/5.0/components/progress/ stwórz pasek postępu z aktualnym postępem 60.  -->
+    <section class="zadanie6">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Zadanie6</h5>
+                    <div class="progress progress_height" role="progressbar" aria-label="Example 20px high"
+                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 60%">60%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Input groups -->
+    <!-- Korzystając z przykładu dostępnego pod adresem https://getbootstrap.com/docs/5.0/forms/input-group/ stwórz input pozwalający na wpisanie tekstu i posiadający po lewej stronie słowo „wiek:” a po prawej „lat”.  -->
+    <section class="zadanie7">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Zadanie7</h5>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">wiek:</span>
+                        <input type="text" class="form-control" aria-label="Wiek">
+                        <span class="input-group-text">lat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Dropdowns -->
+    <!-- Wykorzystując przykład ze strony https://getbootstrap.com/docs/5.0/components/dropdowns/ utwórz przycisk „Planety” z rozwijanym menu zawierającym linki do stron internetowych z opisem poszczególnych planet układu słonecznego.  -->
+    <section class="zadanie8">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Planety
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://pl.wikipedia.org/wiki/Merkury">Merkury</a></li>
+                            <li><a class="dropdown-item" href="https://pl.wikipedia.org/wiki/Wenus">Wenus</a></li>
+                            <li><a class="dropdown-item" href="https://pl.wikipedia.org/wiki/Ziemia">Ziemia</a></li>
+                            <li><a class="dropdown-item" href="https://pl.wikipedia.org/wiki/Mars">Mars</a></li>
+                            <li><a class="dropdown-item" href="https://pl.wikipedia.org/wiki/Jowisz">Jowisz</a></li>
+                            <li><a class="dropdown-item" href="https://pl.wikipedia.org/wiki/Saturn">Saturn</a></li>
+                            <li><a class="dropdown-item" href="https://pl.wikipedia.org/wiki/Uran">Uran</a></li>
+                            <li><a class="dropdown-item" href="https://pl.wikipedia.org/wiki/Neptun">Neptun</a></li>
+                            <li><a class="dropdown-item" href="https://pl.wikipedia.org/wiki/(134340)_Pluton">Pluton</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
     <!-- ==================================================================== -->
     <!-- Вариант подключения Bootsrap извне -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> -->

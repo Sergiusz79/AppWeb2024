@@ -1,0 +1,77 @@
+:root {
+  --color1: #05b1b1;
+  --color2: #52339a;
+}
+
+section {
+  margin: 30px auto;
+  min-height: 50px;
+}
+
+/* =============== Zadanie1 =============== */
+.zadanie1,
+.zadanie3,
+.zadanie5,
+.zadanie7 {
+  background-color: #eee;
+}
+
+/* Почему не работает font-size и border:
+Наследование шрифта:
+Кнопка .btn от Bootstrap имеет свои стили, включая padding, font-size и border.
+font-size на <button> не влияет напрямую на <i>, если у иконки стоит свой размер через 1em (что обычно для Bootstrap Icons).
+Иконка — это <i> внутри кнопки. Чтобы увеличить её размер, нужно назначить font-size именно для <i>
+Border и background:
+Bootstrap .btn задаёт border и background через специфичность CSS.
+Просто .btn_icon { border: none; background: transparent; } иногда перекрывается стилями .btn.
+Решение — сделать селектор более точным
+*/
+.btn.btn_icon {
+  border: none !important;
+  background: transparent !important;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.btn.btn_icon i {
+  font-size: 2rem;
+}
+
+.btn.btn_icon:hover {
+  color: var(--color2);
+}
+
+/* =============== Zadanie2 =============== */
+
+.page-item {
+  cursor: pointer;
+}
+.page-item i {
+  transition: color 0.3s;
+}
+
+.page-item:hover i {
+  color: var(--color2);
+}
+
+.btn_pagination i {
+  font-size: 2rem;
+}
+
+/* =============== Zadanie5 =============== */
+.zadanie5 img{
+    width: 150px;
+    height: 150px;
+}
+/* =============== Zadanie6 =============== */
+/* У тебя сейчас высота задаётся inline-style который всегда приоритетнее, чем обычный CSS. 
+Поэтому твои правила в style.css их не перебьют, если только не использовать !important или не убрать inline-стили. */
+.progress_height{
+ height: 20px !important;
+}
+
+/* =============== Zadanie6 =============== */
+.zadanie8{
+    min-height: 350px;
+}
+
