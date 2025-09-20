@@ -7,12 +7,18 @@
     <link type="text/css" rel="stylesheet" href="css/ukladStrony.css" />
     <meta name="author" content="Your Name">
     <title>UkladStronyOpartyOSiatke</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
+    <!-- Wykorzystaj 3 dowolne tematy graficzne (http://bootswatch.com) do przygotowania trzech wersji zaprojektowanego interfejsu.  -->
+     <!-- Cyborg -->
+    <!-- <link rel="stylesheet" href="css/bootswatch/cyborg/bootstrap.min.css"> -->
+     <!-- Quartz -->
+    <!-- <link rel="stylesheet" href="css/bootswatch/quartz/bootstrap.min.css"> -->
+     <!-- Morph -->
+    <link rel="stylesheet" href="css/bootswatch/morph/bootstrap.min.css">
 </head>
 
 <body>
-
     <!-- cześć nagłówek składa się z menu - dropdown menus  button group-->
     <header>
         <div class="container">
@@ -42,7 +48,8 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-4 text-start">
+                <!-- w elemencie sidebar dodaj kilka akapitów z aktualnościami (np. treści pobierz z www.onet.pl) oraz przyciskiem more prowadzącym do pełnej treści artykułu -->
+                <div class="col-sm-12 col-md-5 col-lg-4 text-start">
                     <aside class="d-flex flex-column justify-content-center gap-3">
                         <div class="sidebar">
                             <p class="akapit">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo ut alias
@@ -119,96 +126,105 @@
                         </div>
                     </aside>
                 </div>
-                <div class="col-6">
-                    <div id="carouselExampleIndicators" class="carousel slide">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                class="active carousel_button" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                aria-label="Slide 2" class="carousel_button"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                aria-label="Slide 3" class="carousel_button"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                                aria-label="Slide 4" class="carousel_button"></button>
+                <div class="col-sm-12 col-md-7 col-lg-6">
+                    <!-- element Content ma zawierać pokaz slajdów -->
+                    <section class="content">
+                        <div id="carouselExampleIndicators" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                    class="active carousel_button" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                    aria-label="Slide 2" class="carousel_button"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                    aria-label="Slide 3" class="carousel_button"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                                    aria-label="Slide 4" class="carousel_button"></button>
+                            </div>
+                            <div class="carousel-inner ">
+                                <div class="carousel-item active">
+                                    <img src="img/2.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/1.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/3.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/4.jpg" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <div class="carousel-inner ">
-                            <div class="carousel-item active">
-                                <img src="img/2.jpg" class="d-block w-100" alt="...">
+                    </section>
+                    <!-- poniżej pokazu slajdów znajduje się komponent Togglable tabs z następującymi zakładkami o mnie, portfolio – miniaturki zdjęć stylizowane tak aby były okrągłe, formularz kontaktowy- z przykładowym formularzem -->
+                    <section class="togglableTabs ">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#oMnie">O mnie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#portfolio">Portfolio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#kontakt"
+                                    onclick="document.getElementById('exampleInputEmail1').focus()">Kontakt</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="oMnie">Lorem ipsum, dolor sit amet consectetur
+                                adipisicing elit. Corporis fugiat aliquam saepe odit rerum libero laudantium accusantium
+                                praesentium iste! Ea quasi quisquam, esse facilis eos a delectus cum ratione molestias
+                                accusamus dolorem ducimus praesentium deleniti ut dolorum amet. Vero, nulla distinctio
+                                ex
+                                fugit assumenda fuga quibusdam. Aliquid dicta quod ducimus quas, nam laboriosam
+                                perferendis
+                                consequatur doloribus dolore odit quam tempore! Vel qui impedit soluta sapiente? Ducimus
+                                omnis cupiditate tenetur est?</div>
+                            <div class="tab-pane fade" id="portfolio">
+                                <div class="d-flex justify-content-between">
+                                    <img src="img/2_mini.jpg" alt="portfolio image" class="portfolio_img">
+                                    <img src="img/1_mini.jpg" alt="portfolio image" class="portfolio_img">
+                                    <img src="img/3_mini.jpg" alt="portfolio image" class="portfolio_img">
+                                    <img src="img/4_mini.jpg" alt="portfolio image" class="portfolio_img">
+                                </div>
                             </div>
-                            <div class="carousel-item">
-                                <img src="img/1.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/3.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/4.jpg" class="d-block w-100" alt="...">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                    <!-- poniżej pokazu slajdów znajduje się komponent Togglable tabs z następującymi zakładkami -->
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#oMnie">O mnie</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#portfolio">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#kontakt"
-                                onclick="document.getElementById('exampleInputEmail1').focus()">Kontakt</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="oMnie">Lorem ipsum, dolor sit amet consectetur
-                            adipisicing elit. Corporis fugiat aliquam saepe odit rerum libero laudantium accusantium
-                            praesentium iste! Ea quasi quisquam, esse facilis eos a delectus cum ratione molestias
-                            accusamus dolorem ducimus praesentium deleniti ut dolorum amet. Vero, nulla distinctio ex
-                            fugit assumenda fuga quibusdam. Aliquid dicta quod ducimus quas, nam laboriosam perferendis
-                            consequatur doloribus dolore odit quam tempore! Vel qui impedit soluta sapiente? Ducimus
-                            omnis cupiditate tenetur est?</div>
-                        <div class="tab-pane fade" id="portfolio">
-                            <div class="d-flex justify-content-between">
-                                <img src="img/2_mini.jpg" alt="portfolio image" class="portfolio_img">
-                                <img src="img/1_mini.jpg" alt="portfolio image" class="portfolio_img">
-                                <img src="img/3_mini.jpg" alt="portfolio image" class="portfolio_img">
-                                <img src="img/4_mini.jpg" alt="portfolio image" class="portfolio_img">
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="kontakt">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter email address...">
-                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                            <div class="tab-pane fade" id="kontakt">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                            aria-describedby="emailHelp" placeholder="Enter email address...">
+                                        <div id="emailHelp" class="form-text">We'll never share your email with anyone
+                                            else.
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Enter password...">
-                                </div>
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1"
+                                            placeholder="Enter password...">
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
-                <div class="col-2 text-center">
+                <!-- w elemencie aside znajduje się alert przypominający o kilku przyszłych zajęciach -->
+                <div class="col-sm-12 col-md-12 col-lg-2 text-center">
                     <div class="alert alert-success" role="alert">
                         Przypominienie!
                     </div>
@@ -228,6 +244,7 @@
     <footer>
         <div class="container">
             <div class="row m-4 p-4">
+                <!-- do paginacji proszę podpiąć Tooltips (dymek z komentarzem o treści: To jest komentarz!) -->
                 <div class="col-12 p-4">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
@@ -260,7 +277,6 @@
         </div>
     </footer>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
