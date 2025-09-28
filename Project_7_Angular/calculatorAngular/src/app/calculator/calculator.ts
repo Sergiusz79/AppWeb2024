@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'ng-calculator',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './calculator.html',
 })
 export class Calculator {
@@ -41,7 +44,7 @@ export class Calculator {
   pressOperator(op: string) {
     //Do not allow operators more than once
     const lastKey = this.input[this.input.length - 1];
-    if (lastKey === '-' || lastKey === '+') {
+    if (lastKey === '-' || lastKey === '+' || lastKey === '*' || lastKey === '/') {
       return;
     }
     this.input = this.input + op;
@@ -63,7 +66,7 @@ export class Calculator {
       formula = formula.substr(0, formula.length - 1);
     }
     lastKey = formula[formula.length - 1];
-    if (lastKey === '-' || lastKey === '+' || lastKey === '.') {
+    if (lastKey === '-' || lastKey === '+' || lastKey === '.' || lastKey === '*' || lastKey === '/') {
       formula = formula.substr(0, formula.length - 1);
     }
     console.log('Formula ' + formula);
