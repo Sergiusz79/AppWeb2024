@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Data } from '../data';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
-  imports: [],
   templateUrl: './posts.html',
-  styleUrl: './posts.css'
+  styleUrls: ['./posts.css'],
 })
-export class Posts {
+export class Posts implements OnInit {
+  posts$: any;
+  constructor(private data: Data) {}
 
+  ngOnInit() {
+    this.data.getPosts().subscribe((data) => (this.posts$ = data));
+  }
 }

@@ -5,6 +5,11 @@ body {
   height: 100vh;
 }
 
+a[routerLink] {
+  cursor: pointer;
+  text-decoration: none; /* если не нужен подчёркнутый текст */
+}
+
 #container {
   display: grid;
   grid-template-columns: 70px auto;

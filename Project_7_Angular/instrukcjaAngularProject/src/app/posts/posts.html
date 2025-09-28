@@ -1,1 +1,8 @@
-<p>posts works!</p>
+<h1>Posts</h1>
+
+<ul>
+    <li>
+        @for( post of posts$; track post.id ){<a routerLink="">{{ post.title }}</a>
+        <p>{{ post.body }}</p>}
+    </li>
+</ul>
